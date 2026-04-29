@@ -5,7 +5,7 @@ dnl AR_PCM_PLAYBACK(index, formats, rate_min, rate_max, ch_min, ch_max)
 define(`AR_PCM_PLAYBACK',
 `'
 `SectionPCMCapabilities."`MultiMedia'eval($1 +1 )` Playback'" {'
-`        formats STR($2)'
+`        formats STR(`$2')'
 `        rate_min STR($3)'
 `        rate_max STR($4)'
 `        channels_min STR($5)'
