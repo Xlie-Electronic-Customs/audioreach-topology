@@ -29,6 +29,11 @@ STREAM_SG_PCM_ADD(audioreach/subgraph-compress-stream-vol-playback.m4, FRONTEND_
 `S16_LE', 48000, 48000, 2, 2,
 0x00004002, 0x00004002, 0x00006010, `110000', `true')
 dnl
+dnl Playback MultiMedia4 (Display Port)
+STREAM_SG_PCM_ADD(audioreach/subgraph-stream-vol-playback.m4, FRONTEND_DAI_MULTIMEDIA4,
+	`S16_LE', 48000, 48000, 2, 2,
+	0x00004005, 0x00004005, 0x00006030, `110000')
+dnl
 #
 #
 # Device SubGraph  for WSA RX0 Backend
@@ -53,9 +58,18 @@ DEVICE_SG_ADD(audioreach/subgraph-device-i2s-capture.m4, `Tertiary', TERTIARY_MI
         `S16_LE', 48000, 48000, 1, 1,
         LPAIF_INTF_TYPE_SDR, I2S_INTF_TYPE_TERTIARY, SD_LINE_IDX_I2S_SD0, DATA_FORMAT_FIXED_POINT,
         0x00004008, 0x00004008, 0x00006080, `TERTIARY_MI2S_TX', `TERTIARY_MI2S_TX')
+dnl Display port0 Playback
+DEVICE_SG_ADD(audioreach/subgraph-device-display-port-playback.m4, `DISPLAY_PORT_RX_0', DISPLAY_PORT_RX_0,
+	`S16_LE', 48000, 48000, 2, 2,
+	0, 0, 0, DATA_FORMAT_FIXED_POINT,
+	0x00004012, 0x00004012, 0x00006120, `DISPLAY_PORT_RX_0')
+dnl
 
 STREAM_DEVICE_PLAYBACK_MIXER(PRIMARY_MI2S_RX, ``PRIMARY_MI2S_RX'', ``MultiMedia1'', ``MultiMedia3'')
 STREAM_DEVICE_PLAYBACK_ROUTE(PRIMARY_MI2S_RX, ``PRIMARY_MI2S_RX Audio Mixer'', ``MultiMedia1, stream0.logger1'', ``MultiMedia3, stream2.logger1'')
+
+STREAM_DEVICE_PLAYBACK_MIXER(DISPLAY_PORT_RX_0, ``DISPLAY_PORT_RX_0'', ``MultiMedia4'')
+STREAM_DEVICE_PLAYBACK_ROUTE(DISPLAY_PORT_RX_0, ``DISPLAY_PORT_RX_0 Audio Mixer'', ``MultiMedia4, stream3.logger1'')
 
 dnl STREAM_DEVICE_CAPTURE_MIXER(stream-index, kcontro1, kcontrol2... kcontrolN)
 STREAM_DEVICE_CAPTURE_MIXER(FRONTEND_DAI_MULTIMEDIA2, ``TERTIARY_MI2S_TX'')
