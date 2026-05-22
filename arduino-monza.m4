@@ -56,6 +56,13 @@ DEVICE_SG_ADD(audioreach/subgraph-device-i2s-playback.m4, `LPI RX0', LPI_MI2S_RX
 	LPAIF_INTF_TYPE_RXTX, I2S_INTF_TYPE_PRIMARY, SD_LINE_IDX_I2S_SD0, DATA_FORMAT_FIXED_POINT,
 	0x00004006, 0x00004006, 0x00006060, `LPI_MI2S_RX_0')
 dnl
+
+dnl Display port0 Playback
+DEVICE_SG_ADD(audioreach/subgraph-device-display-port-playback.m4, `DISPLAY_PORT_RX_0', DISPLAY_PORT_RX_0,
+	`S16_LE', 48000, 48000, 2, 2,
+	0, 0, 0, DATA_FORMAT_FIXED_POINT,
+	0x00004007, 0x00004007, 0x00006070, `DISPLAY_PORT_RX_0')
+
 dnl LPI QUAD Capture //FIXME.. WHY SD1 ??
 DEVICE_SG_ADD(audioreach/subgraph-device-i2s-capture.m4, `LPI TX0', LPI_MI2S_TX_0,
         `S16_LE', 48000, 48000, 1, 2,
@@ -66,16 +73,20 @@ dnl LPI MI2S4 using WSA DMA
 DEVICE_SG_ADD(audioreach/subgraph-device-i2s-playback.m4, `LPI RX4', LPI_MI2S_RX_4,
 	`S16_LE', 48000, 48000, 2, 2,
 	LPAIF_INTF_TYPE_WSA2, I2S_INTF_TYPE_PRIMARY, SD_LINE_IDX_I2S_SD0, DATA_FORMAT_FIXED_POINT,
-	0x00004009, 0x00004009, 0x00006070, `LPI_MI2S_RX_4')
+	0x00004009, 0x00004009, 0x00006090, `LPI_MI2S_RX_4')
 
 
 STREAM_DEVICE_PLAYBACK_MIXER(LPI_MI2S_RX_0, ``LPI_MI2S_RX_0'', ``MultiMedia1'', ``MultiMedia2'', ``MultiMedia3'')
 STREAM_DEVICE_PLAYBACK_MIXER(LPI_MI2S_RX_4, ``LPI_MI2S_RX_4'', ``MultiMedia1'', ``MultiMedia2'', ``MultiMedia3'')
+STREAM_DEVICE_PLAYBACK_MIXER(DISPLAY_PORT_RX_0, ``DISPLAY_PORT_RX_0'', ``MultiMedia1'', ``MultiMedia2'', ``MultiMedia3'')
 
 STREAM_DEVICE_PLAYBACK_ROUTE(LPI_MI2S_RX_0, ``LPI_MI2S_RX_0 Audio Mixer'',
  ``MultiMedia1, stream0.logger1'', ``MultiMedia2, stream1.logger1'', ``MultiMedia3, stream2.logger1'')
 
 STREAM_DEVICE_PLAYBACK_ROUTE(LPI_MI2S_RX_4, ``LPI_MI2S_RX_4 Audio Mixer'',
+ ``MultiMedia1, stream0.logger1'', ``MultiMedia2, stream1.logger1'', ``MultiMedia3, stream2.logger1'')
+
+STREAM_DEVICE_PLAYBACK_ROUTE(DISPLAY_PORT_RX_0, ``DISPLAY_PORT_RX_0 Audio Mixer'',
  ``MultiMedia1, stream0.logger1'', ``MultiMedia2, stream1.logger1'', ``MultiMedia3, stream2.logger1'')
 
 dnl STREAM_DEVICE_CAPTURE_MIXER(stream-index, kcontro1, kcontrol2... kcontrolN)
