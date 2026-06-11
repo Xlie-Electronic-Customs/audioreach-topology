@@ -14,6 +14,7 @@ set(TPLGS
 	"SM8550-HDK\;SM8550-HDK\;qcom/sm8550\;"
 	"SM8550-HDK\;SM8550-QRD\;qcom/sm8550\;"
 	"SM8550-HDK\;SM8650-QRD\;qcom/sm8650\;"
+	"SM8550-HDK\;SM8650-APS2\;qcom/sm8650/ayaneo/ps2\;"
 	"SM8550-HDK\;SM8650-MTP\;qcom/sm8650\;"
 	"SM8550-HDK\;SM8650-HDK\;qcom/sm8650\;"
 	"SM8550-HDK\;SM8750-MTP\;qcom/sm8750\;"
