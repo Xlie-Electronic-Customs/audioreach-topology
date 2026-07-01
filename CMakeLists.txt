@@ -9,6 +9,7 @@ set(TPLGS
 	"Qualcomm-RB5-WSA8815-Speakers-DMIC0\;Qualcomm-RB5-WSA8815-Speakers-DMIC0\;qcom/sm8250\;"
 	"Qualcomm-RB5-WSA8815-Speakers-DMIC0-compress\;Qualcomm-RB5-WSA8815-Speakers-DMIC0-compress\;qcom/sm8250\;"
 	"SM8250-MTP-WCD9380-WSA8810-VA-DMIC\;SM8250-MTP-WCD9380-WSA8810-VA-DMIC\;qcom/sm8250\;"
+	"OnePlus-10-Pro\;OnePlus-10-Pro\;qcom/sm8450\;"
 	"SM8450-HDK\;SM8450-HDK\;qcom/sm8450\;"
 	"SM8550-HDK\;Kaanapali-MTP\;qcom/kaanapali\;"
 	"SM8550-HDK\;SM8550-HDK\;qcom/sm8550\;"
